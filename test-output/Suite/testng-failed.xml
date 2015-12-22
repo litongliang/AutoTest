@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]" parallel="classes">
+  <test name="Test(failed)" parallel="classes">
+    <groups>
+      <run>
+        <include name="Case1"/>
+        <include name="MapTest"/>
+        <include name="JDaddress"/>
+        <include name="useCookies"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="com.dbyl.tests.MapTest">
+        <methods>
+          <include name="afterTest"/>
+          <include name="mapTest"/>
+          <include name="beforeTest"/>
+        </methods>
+      </class> <!-- com.dbyl.tests.MapTest -->
+      <class name="com.dbyl.tests.JDaddress">
+        <methods>
+          <include name="testJD"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.dbyl.tests.JDaddress -->
+      <class name="com.dbyl.tests.UseCookieLogin">
+        <methods>
+          <include name="beforeRun"/>
+          <include name="afterTearDown"/>
+        </methods>
+      </class> <!-- com.dbyl.tests.UseCookieLogin -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="classes" thread-count="5">
+  <test name="Test">
+  <groups> 
+      <run> 
+         <include name="Case1" /> 
+         <include name="MapTest" /> 
+         <include name="JDaddress" /> 
+         <include name="useCookies" /> 
+       </run> 
+    </groups> 
+     <classes>
+      <class name="com.dbyl.tests.Case1"/>
+      <class name="com.dbyl.tests.JDaddress"/>
+      <class name="com.dbyl.tests.UseCookieLogin"/>
+      <class name="com.dbyl.tests.MapTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
