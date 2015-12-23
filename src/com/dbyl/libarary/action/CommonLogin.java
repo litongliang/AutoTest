@@ -4,14 +4,16 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
 import com.dbyl.libarary.pageAction.HomePage;
 import com.dbyl.libarary.pageAction.LoginPage;
 import com.dbyl.libarary.pageAction.replyLoanPageInfo;
 import com.dbyl.libarary.utils.replyLoanPage;
+import com.thoughtworks.selenium.Wait;
 
-public class CommonLogin {
+public class CommonLogin  extends Thread{
 
 	private static WebDriver driver;
 
@@ -33,7 +35,7 @@ public class CommonLogin {
 	}
 	
 	
-	public static void typeLoan() throws Exception{
+	public static void typeLoan()   throws Exception {
 		// TODO Auto-generated method stub
 		
 		loanPageInfo =new replyLoanPageInfo(getDriver());
@@ -46,10 +48,12 @@ public class CommonLogin {
 		driver.navigate().to("http://192.168.0.88/happyfi2.0/prd/personInfo.html");
 		
 		loanPageInfo.sendKeysMethod("username", "王铭");
-		loanPageInfo.sendKeysMethod("userID","370802199005134518");
-		loanPageInfo.sendKeysMethod("userPhoneNum","15106781833");
+		loanPageInfo.sendKeysMethod("userID","370802199405134518");
+		loanPageInfo.sendKeysMethod("userPhoneNum","15122781833");
 		loanPageInfo.clickMethod("userID");
 		loanPageInfo.clickMethod("sendNum");
+		//Wait.until(ExpectedConditions.alertIsPresent());
+		Thread.sleep(3000);
 		try{
 			 Alert alert = driver.switchTo().alert();
 			 if(null ==alert){						 

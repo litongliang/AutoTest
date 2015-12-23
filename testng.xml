@@ -5,16 +5,10 @@
   <groups> 
       <run> 
          <include name="Case1" /> 
-         <include name="MapTest" /> 
-         <include name="JDaddress" /> 
-         <include name="useCookies" /> 
        </run> 
     </groups> 
      <classes>
       <class name="com.dbyl.tests.Case1"/>
-      <class name="com.dbyl.tests.JDaddress"/>
-      <class name="com.dbyl.tests.UseCookieLogin"/>
-      <class name="com.dbyl.tests.MapTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
