@@ -10,6 +10,9 @@ import org.testng.Assert;
 import com.dbyl.libarary.pageAction.HomePage;
 import com.dbyl.libarary.pageAction.LoginPage;
 import com.dbyl.libarary.pageAction.replyLoanPageInfo;
+import com.dbyl.libarary.utils.ChineseName;
+import com.dbyl.libarary.utils.IDCard;
+import com.dbyl.libarary.utils.Phone;
 import com.dbyl.libarary.utils.replyLoanPage;
 import com.thoughtworks.selenium.Wait;
 
@@ -36,24 +39,29 @@ public class CommonLogin  extends Thread{
 	
 	
 	public static void typeLoan()   throws Exception {
-		// TODO Auto-generated method stub
+		//生成随机中文名以及身份证号码手机
+		ChineseName name= new ChineseName();
+		IDCard card=new IDCard();
+		Phone phone = new Phone();
 		
 		loanPageInfo =new replyLoanPageInfo(getDriver());
 		loanPageInfo.waitForPageLoad();
 		//loanPageInfo.typeInputBox("50000");
 		loanPageInfo.sendKeysMethod("loanMoney", "50000");
 		loanPageInfo.clickMethod("watchTotalNum");
-		//loanPageInfo.checkCurrentPage("checkpreliminary");
-		Assert.assertTrue(loanPageInfo.checkCurrentPage("checkpreliminary"), "This is not preliminary.html !");
+		//2.0去掉
+	//	Assert.assertTrue(loanPageInfo.checkCurrentPage("checkpreliminary"), "This is not preliminary.html !");
+		
+		Assert.assertTrue(loanPageInfo.checkCurrentPage("personInfo"), "This is not personInfo.html !");
 		driver.navigate().to("http://192.168.0.88/happyfi2.0/prd/personInfo.html");
 		
-		loanPageInfo.sendKeysMethod("username", "王铭");
-		loanPageInfo.sendKeysMethod("userID","370802199405134518");
-		loanPageInfo.sendKeysMethod("userPhoneNum","15122781833");
+		loanPageInfo.sendKeysMethod("username", name.returnName());
+		loanPageInfo.sendKeysMethod("userID",card.getIDCard());
+		loanPageInfo.sendKeysMethod("userPhoneNum",phone.getTel());
 		loanPageInfo.clickMethod("userID");
 		loanPageInfo.clickMethod("sendNum");
 		//Wait.until(ExpectedConditions.alertIsPresent());
-		Thread.sleep(3000);
+		Thread.sleep(5000);
 		try{
 			 Alert alert = driver.switchTo().alert();
 			 if(null ==alert){						 
@@ -72,8 +80,8 @@ public class CommonLogin  extends Thread{
 		loanPageInfo.clickMethod("marryClick");
 		loanPageInfo.clickMethod("colleageClick");
 		loanPageInfo.clickMethod("salaryClick");
-		loanPageInfo.clickMethod("othersClick");
-		loanPageInfo.sendKeysMethod("OtherContact", "18201778888");
+		//loanPageInfo.clickMethod("othersClick");
+		loanPageInfo.sendKeysMethod("OtherContact", phone.getTel());
 		loanPageInfo.clickMethod("relationShip");
 		loanPageInfo.clickMethod("confirmLoanInfo");
 		loanPageInfo.clickMethod("swichOne");		
@@ -98,10 +106,15 @@ public class CommonLogin  extends Thread{
 			Alert alert = driver.switchTo().alert();
 			 alert.accept();
 			 loanPageInfo.clickMethod("sendNum"); 
+			
 			 loanPageInfo.clickMethod("confirmLoanInfo");
 			 loanPageInfo.clickMethod("swichOne");
 			System.out.print("No alert");
 		}
+		 
+	 driver.navigate().to("http://192.168.0.88/happyfi2.0/prd/personInfo2.html");
+	
+	 
 	}
 	
 	public static void  loginToHomePage()
@@ -110,7 +123,7 @@ public class CommonLogin  extends Thread{
 		loginPage.waitForPageLoad();
 	}
 	public static HomePage login() throws Exception {
-		return CommonLogin.login("13818797911", "welcome1");
+		return CommonLogin.login("13818797931", "welcome1");
 	}
 	
 
